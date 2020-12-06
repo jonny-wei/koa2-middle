@@ -1,0 +1,74 @@
+{
+  "name": "koa2-middle",
+  "version": "1.2.0",
+  "description": "基于koa2框架的nodejs中间层（BFF）简单实践 demo",
+  "author": "jonny-wei",
+  "scripts": {
+    "start": "npm run build && cross-env NODE_ENV=development node dist/bin/www.js",
+    "dev": "cross-env NODE_ENV=development ./node_modules/.bin/nodemon --exec babel-node src/bin/www.js",
+    "build": "babel src --out-dir dist --ignore src/views/*.pug",
+    "prod": "npm run build && pm2 start pm2.json",
+    "test": "npm run build && cross-env NODE_ENV=test node dist/bin/www.js",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "commit": "git-cz",
+    "release": "standard-version",
+    "tag": "git push --follow-tags origin master"
+  },
+  "dependencies": {
+    "@babel/cli": "7.4.3",
+    "@babel/core": "7.4.3",
+    "@babel/node": "7.2.2",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "7.4.3",
+    "@koa/cors": "^2.2.3",
+    "@koa/router": "^8.0.8",
+    "axios": "^0.19.2",
+    "es6-requireindex": "^0.3.10",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-static": "^5.0.0",
+    "log4js": "^6.2.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": [
+        "fix",
+        "lint"
+      ],
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "engines": {
+    "node": ">=8.9",
+    "npm": ">= 3.0.0"
+  },
+  "keywords": [
+    "node",
+    "koa",
+    "koa2",
+    "中间层"
+  ]
+}
