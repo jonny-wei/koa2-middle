@@ -1,6 +1,6 @@
 {
   "name": "koa2-middle",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "基于koa2框架的nodejs中间层（BFF）简单实践 demo",
   "author": "jonny-wei",
   "scripts": {
